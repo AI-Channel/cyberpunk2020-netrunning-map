@@ -1,0 +1,57 @@
+:root {
+    --black:
+        rgba(0, 0, 0, 1);
+    --screamin-green:
+        rgba(83, 255, 101, 1);
+    --white:
+        rgba(255, 255, 255, 1);
+
+    --font-size-xs: 10px;
+    --font-size-s: 12px;
+    --font-size-m: 16px;
+    --font-size-l: 32px;
+    --font-size-m2: 72px;
+
+    --font-family-orbitron: "Orbitron";
+    --font-family-zen_kaku_gothic_new: "Zen Kaku Gothic New";
+    --font-family-zen_kaku_gothic_new-regular: "Zen Kaku Gothic New-Regular";
+}
+
+
+
+.border-6px-white {
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--white);
+}
+
+.orbitron-normal-black-10px {
+    color: var(--black);
+    font-family: var(--font-family-orbitron);
+    font-size: var(--font-size-xs);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.orbitron-normal-black-16px {
+    color: var(--black);
+    font-family: var(--font-family-orbitron);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.orbitron-normal-white-16px {
+    font-family: var(--font-family-orbitron);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.orbitron-normal-screamin-green-16px {
+    color: var(--screamin-green);
+    font-family: var(--font-family-orbitron);
+    font-size: var(--font-size-m);
+    font-weight: 400;
+    font-style: normal;
+}
