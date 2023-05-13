@@ -1,0 +1,21 @@
+$mainColor:#54FF65;
+@mixin VerticalCenter {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+@mixin PageCenter {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  margin: auto;
+}
+@mixin StandardBorder{
+  border: {
+    color: $mainColor;
+    width: 1px;
+    style: solid;
+  }
+}
