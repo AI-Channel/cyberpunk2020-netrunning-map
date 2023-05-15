@@ -36,7 +36,7 @@ function drawCanvas() {
     ctx.shadowBlur = 5;
     ctx.shadowColor = color;
     ctx.lineWidth = 2.0;
-    drawRects(6, 40);
+    drawRects(5, 60);
     drawLines();
 }
 

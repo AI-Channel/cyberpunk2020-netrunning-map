@@ -52,8 +52,9 @@ const toolTipText = reactive({
     width: $barWidth;
     height: $barHeight;
     background-color: $mainColor;
-    box-shadow: -20px 10px 13px rgba($mainColor, 0.5), 0px 0px 8px $mainColor;
+    box-shadow: -20px 10px 13px rgba($mainColor, 0.5), 0 0 8px $mainColor;
     box-sizing: border-box;
+    user-select: none;
     right: 0;
     display: grid;
     grid-template-rows: repeat(8, 1fr);
@@ -69,7 +70,6 @@ const toolTipText = reactive({
 
     .toolTipText {
         @include StandardBorder;
-        user-select: none;
         visibility: hidden;
         text-align: center;
         padding: 5px;
@@ -77,10 +77,9 @@ const toolTipText = reactive({
         z-index: 1;
         top: -5px;
         background-color: rgba(black, 0.6);
-        right: 200%;
+        right: 150%;
         color: $mainColor;
         zoom: .8;
-        backdrop-filter: blur(10px);
         border-radius: 6px;
         font: {
             size: 8px;
@@ -90,7 +89,6 @@ const toolTipText = reactive({
 
     a:hover {
         filter: opacity(70%);
-
         .toolTipText {
             visibility: visible;
         }
@@ -98,7 +96,6 @@ const toolTipText = reactive({
 
     .barText {
         box-sizing: border-box;
-        user-select: none;
         font: {
             size: xx-small;
             family: Orbitron, sans-serif;
