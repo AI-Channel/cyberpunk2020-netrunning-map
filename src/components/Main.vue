@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from "vue";
 import GridMap from "@/components/GridMap.vue";
+import ItemAttributes from "@/components/ItemAttributes.vue";
 
 let dataFortressName = ref("Data Fortress");
 let gridWidthAndHeight = 520;
@@ -32,7 +33,9 @@ let gridSize = 11;
             </table>
             <GridMap :size="gridSize" :widthAndHeight="gridWidthAndHeight"/>
         </div>
-        <div id="itemContainer"></div>
+        <div id="itemContainer">
+            <ItemAttributes/>
+        </div>
     </div>
 </template>
 
@@ -67,7 +70,19 @@ let gridSize = 11;
         @include StandardBorder;
         grid-row: 1/3;
         margin: 20px;
-        padding: 20px;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: $mainColor;
+        border-radius: 6px;
     }
 
     .coordinateAxis {
@@ -94,6 +109,7 @@ let gridSize = 11;
     box-sizing: border-box;
     padding: 7px 20px;
     font-family: Orbitron, sans-serif;
+    user-select: none;
     max-width: 80%;
     max-height: 40px;
     box-shadow: 15px 15px 8px rgba($mainColor, 0.3), 0 0 8px $mainColor;
