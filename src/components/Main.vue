@@ -31,11 +31,22 @@ let gridSize = 11;
                     <td>{{ i }}</td>
                 </tr>
             </table>
-            <GridMap :size="gridSize" :widthAndHeight="gridWidthAndHeight"/>
+            <GridMap :size="gridSize"/>
         </div>
-        <div id="itemContainer">
-            <ItemAttributes/>
+        <div id="containerBorder">
+            <div id="itemContainer">
+                <ItemAttributes/>
+            </div>
+            <div></div>
+            <div id="infoTag">
+                /ETC/LEGEND
+                <div id="version">v3.2.1</div>
+                <img src="/src/assets/icons/filter.svg" alt="x">
+                <img src="/src/assets/icons/ellipsis-horizontal.svg" alt="x">
+                <img src="/src/assets/icons/expand.svg" alt="x">
+            </div>
         </div>
+
     </div>
 </template>
 
@@ -46,6 +57,7 @@ let gridSize = 11;
 #interface {
     @include PageCenter;
     @include StandardBorder;
+    @include ScrollBar;
     box-sizing: border-box;
     width: 1220px;
     height: 640px;
@@ -57,7 +69,21 @@ let gridSize = 11;
         template-columns: 1fr 1fr;
         auto-flow: column;
     }
-
+    #nameTag,#infoTag {
+        background-color: $mainColor;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 7px 20px;
+        font-family: Orbitron, sans-serif;
+        user-select: none;
+    }
+    #nameTag {
+        max-width: 80%;
+        max-height: 40px;
+        box-shadow: 15px 15px 8px rgba($mainColor, 0.3), 0 0 8px $mainColor;
+    }
     #outContainer {
         @include StandardBorder;
         margin: 15px;
@@ -65,24 +91,25 @@ let gridSize = 11;
         width: 570px;
         height: 570px;
     }
-
-    #itemContainer {
+    #containerBorder{
         @include StandardBorder;
         grid-row: 1/3;
         margin: 20px;
-        padding: 18px;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-    }
-
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: $mainColor;
-        border-radius: 6px;
+        display: grid;
+        grid-template: auto auto/1fr 1fr;
+        #itemContainer {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            grid-column: 1/3;
+        }
+        #infoTag {
+            box-shadow: 0 0 8px $mainColor;
+            #version{
+                font-size: small;
+            }
+        }
     }
 
     .coordinateAxis {
@@ -101,17 +128,4 @@ let gridSize = 11;
     }
 }
 
-#nameTag {
-    background-color: $mainColor;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 7px 20px;
-    font-family: Orbitron, sans-serif;
-    user-select: none;
-    max-width: 80%;
-    max-height: 40px;
-    box-shadow: 15px 15px 8px rgba($mainColor, 0.3), 0 0 8px $mainColor;
-}
 </style>

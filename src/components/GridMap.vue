@@ -1,42 +1,47 @@
 <script setup>
 import {reactive} from "vue";
 
-const props = defineProps(['widthAndHeight', 'size']);
+const props = defineProps(['size']);
 let gridContainer = reactive({
     id: "container",
     size: props.size,
-    width: props.widthAndHeight,
-    height: props.widthAndHeight,
 })
+let subMenu = [
+    {name: 'CPU', src: '/src/assets/icons/cpu.svg'},
+    {name: 'Wall', src: '/src/assets/icons/data-wall.svg'},
+    {name: 'Gate', src: '/src/assets/icons/password-gate.svg'},
+    {name: 'Memory', src: '/src/assets/icons/memory.svg'}
+]
+let menuStatus = false;
 </script>
 
 <template>
-    <div :id="gridContainer.id" :style="{'grid-template':
-'repeat('+gridContainer.size+',1fr)/'
-+'repeat('+gridContainer.size+',1fr)',
-'width':gridContainer.width+'px',
-'height':gridContainer.height+'px'}">
-        <div v-for="gridItem in gridContainer.size**2" class="gridItems">
-        </div>
-    </div>
+    <table :id="gridContainer.id">
+        <tr v-for="gridRow in gridContainer.size">
+            <td v-for="gridCol in gridContainer.size"
+                class="gridItems"
+                @click="menuStatus = !menuStatus">
+            </td>
+        </tr>
+    </table>
 </template>
 
 <style lang="scss" scoped>
 @import "/src/assets/style/mixins";
 
 #container {
-  @include StandardBorder;
-  display: grid;
-  box-shadow: 0 0 5px $mainColor;
-
-  .gridItems {
-    box-shadow: inset 0 0 5px $mainColor;
     @include StandardBorder;
-  }
+    box-shadow: 0 0 5px $mainColor;
+    border-spacing: 0;
 
-  .gridItems:hover {
-    border-color: #CCFFCC;
-    box-shadow: inset 0 0 5px #CCFFCC;
-  }
+    .gridItems {
+        box-shadow: inset 0 0 5px $mainColor;
+        @include StandardBorder;
+    }
+
+    .gridItems:hover {
+        border-color: #CCFFCC;
+        box-shadow: inset 0 0 5px #CCFFCC;
+    }
 }
 </style>

@@ -31,24 +31,25 @@ let output = [{
 @import "/src/assets/style/FontStyle";
 
 #infoBar {
-  @include StandardBorder;
-  font-family: Orbitron, sans-serif;
-  margin: 2px;
-  font-size: 18px;
-  text-align: center;
-  height: 50px;
-  border-spacing: 0;
-  flex-shrink: 0;
+    @include StandardBorder;
+    font-family: Orbitron, sans-serif;
+    margin: 2px;
+    font-size: 18px;
+    text-align: center;
+    height: 50px;
+    border-spacing: 0;
+    flex-shrink: 0;
+    user-select: none;
 
-  #number {
-    background-color: $mainColor;
-    width: 50px;
-    box-shadow: 0 0 8px $mainColor;
-  }
+    #number {
+        background-color: $mainColor;
+        width: 50px;
+        box-shadow: 0 0 8px $mainColor;
+    }
 
-  #name, .info {
-    color: $mainColor;
-  }
+    #name, .info {
+        color: $mainColor;
+    }
 
   #name {
     text-shadow: 0 0 5px $mainColor;
