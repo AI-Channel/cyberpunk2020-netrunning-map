@@ -10,14 +10,14 @@ let output = [
 </script>
 
 <template>
-  <table v-for="(i, index) in numberOfItems" id="infoBar">
+  <table v-for="(i, index) in numberOfItems" class="infoBar">
     <tr>
-      <td id="number">
+      <td class="number">
         {{
           index + 1 > 9 ? (index + 1).toString() : "0" + (index + 1).toString()
         }}
       </td>
-      <td id="name">SAMPLE_ITEM</td>
+      <td class="name">SAMPLE_ITEM</td>
       <td class="info">STR =10</td>
       <td class="info">INFO =NULL</td>
     </tr>
@@ -28,7 +28,7 @@ let output = [
 @import "/src/assets/style/mixins";
 @import "/src/assets/style/FontStyle";
 
-#infoBar {
+.infoBar {
   @include StandardBorder;
   font-family: Orbitron, sans-serif;
   margin: 2px;
@@ -39,19 +39,15 @@ let output = [
   flex-shrink: 0;
   user-select: none;
 
-  #number {
+  .number {
     background-color: $mainColor;
     width: 50px;
     box-shadow: 0 0 8px $mainColor;
   }
 
-  #name,
+  .name,
   .info {
     color: $mainColor;
-  }
-
-  #name {
-    text-shadow: 0 0 5px $mainColor;
   }
 }
 </style>

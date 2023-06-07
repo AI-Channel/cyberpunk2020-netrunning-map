@@ -50,10 +50,8 @@ const toolTipText = reactive({
 @import "/src/assets/style/FontStyle";
 #statusBar {
   @include VerticalCenter;
-  $barWidth: 45px;
-  $barHeight: 320px;
-  width: $barWidth;
-  height: $barHeight;
+  width: 45px;
+  height: 320px;
   background-color: $mainColor;
   box-shadow: -20px 10px 13px rgba($mainColor, 0.5), 0 0 8px $mainColor;
   box-sizing: border-box;

@@ -3,6 +3,8 @@ import { ref } from "vue";
 import GridMap from "@/components/GridMap.vue";
 import ItemAttributes from "@/components/ItemAttributes.vue";
 import CoordinateAxis from "@/components/CoordinateAxis.vue";
+import NameTag from "@/components/NameTag.vue";
+import InfoTag from "@/components/InfoTag.vue";
 
 let dataFortressName = ref("Data Fortress");
 let gridWidthAndHeight = 520;
@@ -12,10 +14,7 @@ let numberOfItems = 14;
 
 <template>
   <div id="interface">
-    <div id="nameTag">
-      SYS://VIEW/{{ dataFortressName.toUpperCase() }}
-      <img alt="x" src="/src/assets/icons/reorder-four.svg" />
-    </div>
+    <NameTag :data-fortress-name="dataFortressName" />
     <div
       id="outContainer"
       :style="{
@@ -35,13 +34,7 @@ let numberOfItems = 14;
         <ItemAttributes :number-of-items="numberOfItems" />
       </div>
       <div><!--Blank--></div>
-      <div id="infoTag">
-        /ETC/LEGEND
-        <div id="version">v3.2.1</div>
-        <img src="/src/assets/icons/filter.svg" alt="x" />
-        <img src="/src/assets/icons/ellipsis-horizontal.svg" alt="x" />
-        <img src="/src/assets/icons/expand.svg" alt="x" />
-      </div>
+      <InfoTag />
     </div>
   </div>
 </template>
@@ -65,22 +58,6 @@ let numberOfItems = 14;
     template-columns: 1fr 1fr;
     auto-flow: column;
   }
-  #nameTag,
-  #infoTag {
-    background-color: $mainColor;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 7px 20px;
-    font-family: Orbitron, sans-serif;
-    user-select: none;
-  }
-  #nameTag {
-    max-width: 80%;
-    max-height: 40px;
-    box-shadow: 15px 15px 8px rgba($mainColor, 0.3), 0 0 8px $mainColor;
-  }
   #outContainer {
     @include StandardBorder;
     margin: 15px;
@@ -100,12 +77,6 @@ let numberOfItems = 14;
       flex-direction: column;
       overflow-y: auto;
       grid-column: 1/3;
-    }
-    #infoTag {
-      box-shadow: 0 0 8px $mainColor;
-      #version {
-        font-size: small;
-      }
     }
   }
 }

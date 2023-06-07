@@ -1,5 +1,6 @@
 <script setup>
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
+import DropdownMenu from "@/components/DropdownMenu.vue";
 
 const props = defineProps(["size"]);
 let gridContainer = reactive({
@@ -12,7 +13,11 @@ let subMenu = [
   { name: "Gate", src: "/src/assets/icons/password-gate.svg" },
   { name: "Memory", src: "/src/assets/icons/memory.svg" },
 ];
-let menuStatus = false;
+let menuStatus = ref(false);
+
+function trigger() {
+  menuStatus.value = !menuStatus.value;
+}
 </script>
 
 <template>
@@ -21,10 +26,11 @@ let menuStatus = false;
       <td
         v-for="gridCol in gridContainer.size"
         class="gridItems"
-        @click="menuStatus = !menuStatus"
+        @click="trigger"
       ></td>
     </tr>
   </table>
+  <!--<DropdownMenu v-if="menuStatus" />-->
 </template>
 
 <style lang="scss" scoped>
