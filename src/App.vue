@@ -5,10 +5,9 @@ import Main from "@/components/Main.vue";
 </script>
 
 <template>
-    <MatrixRoom/>
-    <Main/>
-    <StatusBar/>
+  <MatrixRoom />
+  <Main />
+  <StatusBar />
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

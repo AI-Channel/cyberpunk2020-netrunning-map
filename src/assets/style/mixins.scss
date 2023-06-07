@@ -1,4 +1,4 @@
-$mainColor:#54FF65;
+$mainColor: #54ff65;
 @mixin VerticalCenter {
   position: absolute;
   top: 50%;
@@ -12,14 +12,14 @@ $mainColor:#54FF65;
   position: absolute;
   margin: auto;
 }
-@mixin StandardBorder{
+@mixin StandardBorder {
   border: {
     color: $mainColor;
     width: 1px;
     style: solid;
   }
 }
-@mixin ScrollBar{
+@mixin ScrollBar {
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -28,5 +28,4 @@ $mainColor:#54FF65;
     background-color: $mainColor;
     border-radius: 6px;
   }
-
 }
