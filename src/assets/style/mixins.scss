@@ -27,5 +27,6 @@ $mainColor: #54ff65;
   ::-webkit-scrollbar-thumb {
     background-color: $mainColor;
     border-radius: 6px;
+    box-shadow: 0 0 8px $mainColor;
   }
 }

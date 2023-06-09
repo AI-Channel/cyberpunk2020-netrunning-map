@@ -17,10 +17,10 @@
 #infoTag {
   background-color: $mainColor;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
-  padding: 7px 20px;
+  padding: 7px;
   font-family: Orbitron, sans-serif;
   user-select: none;
   box-shadow: 0 0 8px $mainColor;

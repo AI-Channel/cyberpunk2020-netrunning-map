@@ -30,7 +30,7 @@ function trigger() {
       ></td>
     </tr>
   </table>
-  <!--<DropdownMenu v-if="menuStatus" />-->
+  <DropdownMenu v-if="menuStatus" :menu-status="menuStatus" />
 </template>
 
 <style lang="scss" scoped>
@@ -38,11 +38,9 @@ function trigger() {
 
 #container {
   @include StandardBorder;
-  box-shadow: 0 0 5px $mainColor;
   border-spacing: 0;
 
   .gridItems {
-    box-shadow: inset 0 0 5px $mainColor;
     @include StandardBorder;
   }
 
