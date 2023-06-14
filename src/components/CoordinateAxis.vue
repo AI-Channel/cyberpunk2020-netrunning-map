@@ -1,5 +1,8 @@
-<script setup>
-const props = defineProps(["gridWidthAndHeight", "gridSize"]);
+<script setup lang="ts">
+const props = defineProps<{
+  gridWidthAndHeight: number;
+  gridSize: number;
+}>();
 </script>
 
 <template>

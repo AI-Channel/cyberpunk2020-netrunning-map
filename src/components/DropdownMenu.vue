@@ -1,7 +1,12 @@
-<script setup></script>
+<script setup lang="ts">
+const props = defineProps<{
+  x: number;
+  y: number;
+}>();
+</script>
 
 <template>
-  <div id="menuBorder">
+  <div id="menuBorder" :style="{ top: props.y + 'px', left: props.x + 'px' }">
     <div id="menuContainer">
       <div class="innerContainer" v-for="n in 10">
         <div class="item">
@@ -13,7 +18,7 @@
       </div>
     </div>
     <div><!--Blank--></div>
-    <div id="insertButton" @click="">BLOCK INSERTION</div>
+    <div id="insertButton" @click="$emit('ok')">BLOCK INSERTION</div>
   </div>
 </template>
 
@@ -27,11 +32,11 @@
   grid-row: 1/3;
   display: grid;
   box-sizing: border-box;
-  grid-template: auto auto/1fr 1fr;
+  grid-template: auto 22px/1fr 1fr;
   height: 300px;
   width: 300px;
   border-spacing: 0;
-  position: fixed;
+  position: absolute;
   box-shadow: 0 0 5px $mainColor;
   background-color: rgba(0, 0, 0, 0.75);
   font-family: Orbitron, sans-serif;
@@ -52,7 +57,7 @@
         justify-content: space-around;
         align-items: center;
         margin: 0;
-	      text-shadow: 0 0 10px $mainColor;
+        text-shadow: 0 0 10px $mainColor;
       }
       .alter {
         display: none;
@@ -60,10 +65,10 @@
       .item:hover {
         background-color: #54ff65;
         color: black;
-	      box-shadow: 0 0 10px #54ff65;
+        box-shadow: 0 0 10px #54ff65;
         + .info {
           color: #ff5252;
-	        text-shadow: 0 0 10px #ff5252;
+          text-shadow: 0 0 10px #ff5252;
         }
         .origin {
           display: none;

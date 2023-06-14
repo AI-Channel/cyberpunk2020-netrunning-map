@@ -1,25 +1,25 @@
-<script setup>
+<script setup lang="ts">
 let props = defineProps(["numberOfItems"]);
-let output = [
+let input = [
   {
-    nameOfItems: "",
-    mainInfoFirst: "",
-    mainInfoSecond: "",
+    nameOfItems: "SAMPLE_ITEM",
+    mainInfoFirst: "STR =10",
+    mainInfoSecond: "INFO =NULL",
   },
 ];
 </script>
 
 <template>
-  <table v-for="(i, index) in numberOfItems" class="infoBar">
+  <table v-for="(item, index) in input" class="infoBar">
     <tr>
       <td class="number">
         {{
           index + 1 > 9 ? (index + 1).toString() : "0" + (index + 1).toString()
         }}
       </td>
-      <td class="name">SAMPLE_ITEM</td>
-      <td class="info">STR =10</td>
-      <td class="info">INFO =NULL</td>
+      <td class="name">{{ item.nameOfItems }}</td>
+      <td class="info">{{ item.mainInfoFirst }}</td>
+      <td class="info">{{ item.mainInfoSecond }}</td>
     </tr>
   </table>
 </template>

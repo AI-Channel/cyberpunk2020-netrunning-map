@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { reactive, ref } from "vue";
 import DropdownMenu from "@/components/DropdownMenu.vue";
 
@@ -7,16 +7,16 @@ let gridContainer = reactive({
   id: "container",
   size: props.size,
 });
-let subMenu = [
-  { name: "CPU", src: "/src/assets/icons/cpu.svg" },
-  { name: "Wall", src: "/src/assets/icons/data-wall.svg" },
-  { name: "Gate", src: "/src/assets/icons/password-gate.svg" },
-  { name: "Memory", src: "/src/assets/icons/memory.svg" },
-];
-let menuStatus = ref(false);
 
-function trigger() {
-  menuStatus.value = !menuStatus.value;
+let mouse = reactive({
+  mouseX: 0,
+  mouseY: 0,
+});
+
+let menuStatus = ref(false);
+function trigger(event): void {
+  mouse.mouseX = event.x;
+  mouse.mouseY = event.y;
 }
 </script>
 
@@ -26,11 +26,19 @@ function trigger() {
       <td
         v-for="gridCol in gridContainer.size"
         class="gridItems"
-        @click="trigger"
+        @click="
+          trigger($event);
+          menuStatus = !menuStatus;
+        "
       ></td>
     </tr>
   </table>
-  <DropdownMenu v-if="menuStatus" :menu-status="menuStatus" />
+  <DropdownMenu
+    v-show="menuStatus"
+    @ok="menuStatus = !menuStatus"
+    :x="mouse.mouseX"
+    :y="mouse.mouseY"
+  />
 </template>
 
 <style lang="scss" scoped>
@@ -42,6 +50,7 @@ function trigger() {
 
   .gridItems {
     @include StandardBorder;
+    box-sizing: border-box;
   }
 
   .gridItems:hover {
