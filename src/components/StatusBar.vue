@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 
+interface tooltip {
+  gitHub: string;
+  terminal: string;
+  sunny: string;
+  temperature: string;
+  dataFlow: string;
+}
+
 const barText = reactive({
   temperature: "75°C",
   dataFlow: "2MU/S",
 });
-const toolTipText = reactive({
+const toolTipText: tooltip = reactive({
   gitHub: "Contact Us",
   terminal: "Terminal",
   sunny: "Sunny",

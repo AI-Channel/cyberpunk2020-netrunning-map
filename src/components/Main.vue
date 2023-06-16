@@ -1,23 +1,41 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import GridMap from "@/components/GridMap.vue";
 import ItemAttributes from "@/components/ItemAttributes.vue";
 import CoordinateAxis from "@/components/CoordinateAxis.vue";
+import DropdownMenu from "@/components/DropdownMenu.vue";
+import { useMenuStore } from "@/stores";
 
 let dataFortressName = ref<string>("Data Fortress");
+const store = useMenuStore();
+
 interface grid {
   gridSize: number;
   numberOfItems: number;
   gridWidthAndHeight?: number;
 }
+
 let gridAttribute: grid = {
   gridSize: 11,
   numberOfItems: 14,
   gridWidthAndHeight: 520,
 };
+const relativeMouseY = computed(() => {
+  return ref((store.y / window.innerHeight) * 100);
+});
+const relativeMouseX = computed(() => {
+  return ref((store.x / window.innerWidth) * 100);
+});
 </script>
 
 <template>
+  <DropdownMenu
+    v-show="store.menuStatus"
+    :style="{
+      top: relativeMouseY.value + 'vh',
+      left: relativeMouseX.value + 'vw',
+    }"
+  />
   <div id="interface">
     <div id="nameTag">
       SYS://VIEW/{{ dataFortressName.toUpperCase() }}

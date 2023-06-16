@@ -1,24 +1,23 @@
 <script setup lang="ts">
-const props = defineProps<{
-  x: number;
-  y: number;
-}>();
+import { useMenuStore } from "@/stores";
+
+const store = useMenuStore();
 </script>
 
 <template>
-  <div id="menuBorder" :style="{ top: props.y + 'px', left: props.x + 'px' }">
+  <div id="menuBorder" :style="{}">
     <div id="menuContainer">
-      <div class="innerContainer" v-for="n in 10">
+      <div v-for="n in 8" class="innerContainer">
         <div class="item">
-          <img class="origin" src="/src/assets/icons/cpu.svg" alt="x" />
-          <img class="alter" src="/src/assets/icons/cpu-black.svg" alt="x" />
+          <img alt="x" class="origin" src="/src/assets/icons/cpu.svg" />
+          <img alt="x" class="alter" src="/src/assets/icons/cpu-black.svg" />
           CPU
         </div>
         <div class="info">RM/MV</div>
       </div>
     </div>
     <div><!--Blank--></div>
-    <div id="insertButton" @click="$emit('ok')">BLOCK INSERTION</div>
+    <div id="insertButton" @click="store.visSwitch()">BLOCK INSERTION</div>
   </div>
 </template>
 

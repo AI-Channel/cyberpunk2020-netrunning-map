@@ -1,44 +1,23 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
-import DropdownMenu from "@/components/DropdownMenu.vue";
+import { useMenuStore } from "@/stores";
 
 const props = defineProps(["size"]);
-let gridContainer = reactive({
-  id: "container",
-  size: props.size,
-});
-
-let mouse = reactive({
-  mouseX: 0,
-  mouseY: 0,
-});
-
-let menuStatus = ref(false);
-function trigger(event): void {
-  mouse.mouseX = event.x;
-  mouse.mouseY = event.y;
-}
+const store = useMenuStore();
 </script>
 
 <template>
-  <table :id="gridContainer.id">
-    <tr v-for="gridRow in gridContainer.size">
+  <table id="container">
+    <tr v-for="gridRow in props.size">
       <td
-        v-for="gridCol in gridContainer.size"
+        v-for="gridCol in props.size"
         class="gridItems"
         @click="
-          trigger($event);
-          menuStatus = !menuStatus;
+          store.visSwitch();
+          store.getMouse($event);
         "
       ></td>
     </tr>
   </table>
-  <DropdownMenu
-    v-show="menuStatus"
-    @ok="menuStatus = !menuStatus"
-    :x="mouse.mouseX"
-    :y="mouse.mouseY"
-  />
 </template>
 
 <style lang="scss" scoped>
