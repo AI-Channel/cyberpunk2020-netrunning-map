@@ -9,28 +9,31 @@ const props = defineProps<{
   <table class="coordinateAxis">
     <tr>
       <td
-        v-for="i in gridSize"
-        :style="{ width: gridWidthAndHeight / gridSize + 'px' }"
+        v-for="index in gridSize"
+        :style="{ width: props.gridWidthAndHeight / props.gridSize + 'px' }"
         class="axisItem"
+        :key="index"
       >
-        {{ i }}
+        {{ index }}
       </td>
     </tr>
   </table>
   <table class="coordinateAxis">
     <tr
-      v-for="i in gridSize"
-      :style="{ height: gridWidthAndHeight / gridSize + 'px' }"
+      v-for="index in gridSize"
+      :style="{ height: props.gridWidthAndHeight / props.gridSize + 'px' }"
       class="axisItem"
+      :key="index"
     >
-      <td>{{ i }}</td>
+      <td>{{ index }}</td>
     </tr>
   </table>
 </template>
 
 <style scoped lang="scss">
-@import "/src/assets/style/mixins";
-@import "/src/assets/style/FontStyle";
+@import '/src/assets/style/mixins';
+@import '/src/assets/style/FontStyle';
+
 .coordinateAxis {
   font-family: Orbitron, sans-serif;
   color: $mainColor;

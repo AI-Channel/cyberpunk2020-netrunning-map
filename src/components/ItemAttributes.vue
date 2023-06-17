@@ -1,21 +1,18 @@
 <script setup lang="ts">
-let props = defineProps(["numberOfItems"]);
 let input = [
   {
-    nameOfItems: "SAMPLE_ITEM",
-    mainInfoFirst: "STR =10",
-    mainInfoSecond: "INFO =NULL",
-  },
+    nameOfItems: 'SAMPLE_ITEM',
+    mainInfoFirst: 'STR =10',
+    mainInfoSecond: 'INFO =NULL'
+  }
 ];
 </script>
 
 <template>
-  <table v-for="(item, index) in input" class="infoBar">
+  <table v-for="(item, index) in input" class="infoBar" :key="index">
     <tr>
       <td class="number">
-        {{
-          index + 1 > 9 ? (index + 1).toString() : "0" + (index + 1).toString()
-        }}
+        {{ index + 1 > 9 ? (index + 1).toString() : '0' + (index + 1).toString() }}
       </td>
       <td class="name">{{ item.nameOfItems }}</td>
       <td class="info">{{ item.mainInfoFirst }}</td>
@@ -25,8 +22,8 @@ let input = [
 </template>
 
 <style lang="scss" scoped>
-@import "/src/assets/style/mixins";
-@import "/src/assets/style/FontStyle";
+@import '/src/assets/style/mixins';
+@import '/src/assets/style/FontStyle';
 
 .infoBar {
   @include StandardBorder;

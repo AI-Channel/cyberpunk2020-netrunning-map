@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive } from 'vue';
 
 interface tooltip {
   gitHub: string;
@@ -10,15 +10,15 @@ interface tooltip {
 }
 
 const barText = reactive({
-  temperature: "75°C",
-  dataFlow: "2MU/S",
+  temperature: '75°C',
+  dataFlow: '2MU/S'
 });
 const toolTipText: tooltip = reactive({
-  gitHub: "Contact Us",
-  terminal: "Terminal",
-  sunny: "Sunny",
-  temperature: "Temperature",
-  dataFlow: "Data Flow",
+  gitHub: 'Contact Us',
+  terminal: 'Terminal',
+  sunny: 'Sunny',
+  temperature: 'Temperature',
+  dataFlow: 'Data Flow'
 });
 </script>
 
@@ -42,10 +42,7 @@ const toolTipText: tooltip = reactive({
       <p class="barText">{{ barText.dataFlow }}</p>
       <span class="toolTipText">{{ toolTipText.dataFlow }}</span>
     </a>
-    <a
-      class="gridItems"
-      href="https://github.com/AI-Channel/Cyberpunk2020-Netrunning-Map"
-    >
+    <a class="gridItems" href="https://github.com/AI-Channel/Cyberpunk2020-Netrunning-Map">
       <img alt="x" class="icon" src="/src/assets/icons/github.svg" />
       <span class="toolTipText">{{ toolTipText.gitHub }}</span>
     </a>
@@ -54,12 +51,13 @@ const toolTipText: tooltip = reactive({
 </template>
 
 <style lang="scss" scoped>
-@import "/src/assets/style/mixins";
-@import "/src/assets/style/FontStyle";
+@import '/src/assets/style/mixins';
+@import '/src/assets/style/FontStyle';
+
 #statusBar {
   @include VerticalCenter;
-  width: 45px;
-  height: 320px;
+  width: 50px;
+  height: 340px;
   background-color: $mainColor;
   box-shadow: -20px 10px 13px rgba($mainColor, 0.5), 0 0 8px $mainColor;
   box-sizing: border-box;
@@ -74,22 +72,17 @@ const toolTipText: tooltip = reactive({
     display: block;
   }
 
-  .icon {
-    max-width: 90%;
-  }
-
   .toolTipText {
     @include StandardBorder;
-    visibility: hidden;
+    display: none;
     text-align: center;
     padding: 5px;
     position: absolute;
     z-index: 1;
-    top: -5px;
+    top: -1px;
     background-color: rgba(black, 0.6);
     right: 150%;
     color: $mainColor;
-    zoom: 0.8;
     border-radius: 6px;
     font: {
       size: 8px;
@@ -99,8 +92,9 @@ const toolTipText: tooltip = reactive({
 
   a:hover {
     filter: opacity(70%);
+
     .toolTipText {
-      visibility: visible;
+      display: block;
     }
   }
 
@@ -112,7 +106,7 @@ const toolTipText: tooltip = reactive({
     }
     margin: auto;
     padding: 0;
-    zoom: 0.7;
+    zoom: 0.8;
   }
 }
 </style>

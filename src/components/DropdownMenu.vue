@@ -1,19 +1,44 @@
 <script setup lang="ts">
-import { useMenuStore } from "@/stores";
+import { useMenuStore } from '@/stores';
+import CpuIcon from '@/components/icons/CpuIcon.vue';
+import DataWallIcon from '@/components/icons/DataWallIcon.vue';
+import PasswordGateIcon from '@/components/icons/PasswordGateIcon.vue';
+import MemoryIcon from '@/components/icons/MemoryIcon.vue';
 
 const store = useMenuStore();
+let menuInfo = [
+  {
+    components: CpuIcon,
+    name: 'CPU',
+    info: 'RM/MV'
+  },
+  {
+    components: DataWallIcon,
+    name: 'WALL',
+    info: 'STR='
+  },
+  {
+    components: PasswordGateIcon,
+    name: 'GATE',
+    info: 'STR='
+  },
+  {
+    components: MemoryIcon,
+    name: 'MEM',
+    info: 'STR='
+  }
+];
 </script>
 
 <template>
-  <div id="menuBorder" :style="{}">
+  <div id="menuBorder">
     <div id="menuContainer">
-      <div v-for="n in 8" class="innerContainer">
+      <div v-for="(item, index) in menuInfo" class="innerContainer" :key="index">
         <div class="item">
-          <img alt="x" class="origin" src="/src/assets/icons/cpu.svg" />
-          <img alt="x" class="alter" src="/src/assets/icons/cpu-black.svg" />
-          CPU
+          <component :is="menuInfo[index].components" class="icon" />
+          <div>{{ item.name }}</div>
         </div>
-        <div class="info">RM/MV</div>
+        <div class="info">{{ item.info }}</div>
       </div>
     </div>
     <div><!--Blank--></div>
@@ -22,8 +47,8 @@ const store = useMenuStore();
 </template>
 
 <style lang="scss" scoped>
-@import "/src/assets/style/mixins";
-@import "/src/assets/style/FontStyle";
+@import '/src/assets/style/mixins';
+@import '/src/assets/style/FontStyle';
 
 #menuBorder {
   @include StandardBorder;
@@ -32,8 +57,6 @@ const store = useMenuStore();
   display: grid;
   box-sizing: border-box;
   grid-template: auto 22px/1fr 1fr;
-  height: 300px;
-  width: 300px;
   border-spacing: 0;
   position: absolute;
   box-shadow: 0 0 5px $mainColor;
@@ -41,43 +64,50 @@ const store = useMenuStore();
   font-family: Orbitron, sans-serif;
   user-select: none;
   z-index: 1;
+
   #menuContainer {
     overflow-y: auto;
     grid-column: 1/3;
-    font-size: 18px;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     color: $mainColor;
+
     .innerContainer {
       display: grid;
       grid-template-columns: 1fr 1fr;
       div {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
-        margin: 0;
         text-shadow: 0 0 10px $mainColor;
       }
-      .alter {
-        display: none;
-      }
-      .item:hover {
-        background-color: #54ff65;
-        color: black;
-        box-shadow: 0 0 10px #54ff65;
-        + .info {
-          color: #ff5252;
-          text-shadow: 0 0 10px #ff5252;
+      .item {
+        justify-content: space-between;
+        * {
+          margin: 8px;
         }
-        .origin {
-          display: none;
-        }
-        .alter {
-          display: block;
+        &:hover {
+          background-color: $mainColor;
+          color: black;
+          box-shadow: 0 0 10px $mainColor;
+          + .info {
+            color: #ff5252;
+            text-shadow: 0 0 10px #ff5252;
+          }
+          :deep(svg) {
+            * {
+              stroke: black;
+            }
+            path {
+              fill: black;
+            }
+          }
         }
       }
     }
   }
+
   #insertButton {
     font-size: 12px;
     display: flex;

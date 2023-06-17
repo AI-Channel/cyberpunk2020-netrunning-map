@@ -4,6 +4,7 @@ $mainColor: #54ff65;
   top: 50%;
   transform: translate(0, -50%);
 }
+
 @mixin PageCenter {
   top: 0;
   left: 0;
@@ -12,6 +13,7 @@ $mainColor: #54ff65;
   position: absolute;
   margin: auto;
 }
+
 @mixin StandardBorder {
   border: {
     color: $mainColor;
@@ -19,6 +21,7 @@ $mainColor: #54ff65;
     style: solid;
   }
 }
+
 @mixin ScrollBar {
   ::-webkit-scrollbar {
     width: 8px;

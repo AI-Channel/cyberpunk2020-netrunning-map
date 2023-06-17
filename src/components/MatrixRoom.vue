@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted } from 'vue';
 
 let canvas;
 let ctx;
@@ -14,15 +14,15 @@ onMounted(() => {
 });
 
 function initCanvas(): void {
-  canvas = document.querySelector("canvas");
-  ctx = canvas.getContext("2d");
+  canvas = document.querySelector('canvas');
+  ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   drawCanvas();
 }
 
 function drawCanvas(): void {
-  let color = "#54ff65";
+  let color = '#54ff65';
   ctx.strokeStyle = color;
   ctx.globalAlpha = 0.25;
   ctx.shadowBlur = 5;
@@ -41,12 +41,7 @@ function drawRects(numRect: number, sideLength: number): void {
   curX = sideLength * cosA;
   curY = sideLength * sinA;
   for (let cur = 0; cur < numRect; cur++) {
-    ctx.strokeRect(
-      curX,
-      curY,
-      window.innerWidth - 2 * curX,
-      window.innerHeight - 2 * curY
-    );
+    ctx.strokeRect(curX, curY, window.innerWidth - 2 * curX, window.innerHeight - 2 * curY);
     curX = (1 + 1 / 2 ** cur) * curX;
     curY = (1 + 1 / 2 ** cur) * curY;
   }
@@ -59,7 +54,7 @@ function drawLines(): void {
       let cur = [window.innerWidth * i, window.innerHeight * j];
       let to = [
         i === 1 ? window.innerWidth - curX : curX,
-        j === 1 ? window.innerHeight - curY : curY,
+        j === 1 ? window.innerHeight - curY : curY
       ];
       ctx.moveTo(cur[0], cur[1]);
       ctx.lineTo(to[0], to[1]);
@@ -75,8 +70,8 @@ function drawLines(): void {
 </template>
 
 <style lang="scss" scoped>
-@import "/src/assets/style/mixins";
-@import "/src/assets/style/FontStyle";
+@import '/src/assets/style/mixins';
+@import '/src/assets/style/FontStyle';
 
 canvas {
   @include PageCenter;

@@ -1,7 +1,7 @@
-import { ref } from "vue";
-import { defineStore } from "pinia";
+import { ref } from 'vue';
+import { defineStore } from 'pinia';
 
-export const useMenuStore = defineStore("menu", () => {
+export const useMenuStore = defineStore('menu', () => {
   const menuStatus = ref(false);
   const x = ref(0);
   const y = ref(0);
@@ -10,7 +10,7 @@ export const useMenuStore = defineStore("menu", () => {
     menuStatus.value = !menuStatus.value;
   }
 
-  function getMouse(event) {
+  function getMouse(event: MouseEvent) {
     x.value = event.pageX;
     y.value = event.pageY;
   }
@@ -20,6 +20,6 @@ export const useMenuStore = defineStore("menu", () => {
     visSwitch,
     x,
     y,
-    getMouse,
+    getMouse
   };
 });

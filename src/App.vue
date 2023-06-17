@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import StatusBar from "@/components/StatusBar.vue";
-import MatrixRoom from "@/components/MatrixRoom.vue";
-import Main from "@/components/Main.vue";
+import StatusBar from '@/components/StatusBar.vue';
+import MatrixRoom from '@/components/MatrixRoom.vue';
+import Main from '@/components/MainInterface.vue';
 </script>
 
 <template>
