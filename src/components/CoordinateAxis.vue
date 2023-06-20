@@ -1,8 +1,13 @@
 <script setup lang="ts">
-const props = defineProps<{
-  gridWidthAndHeight: number;
-  gridSize: number;
-}>();
+import { computed } from 'vue';
+
+const props = defineProps({
+  gridWidthAndHeight: Number,
+  gridSize: Number
+});
+const axisSize = computed(() => {
+  return props.gridWidthAndHeight / props.gridSize;
+});
 </script>
 
 <template>
@@ -10,7 +15,7 @@ const props = defineProps<{
     <tr>
       <td
         v-for="index in gridSize"
-        :style="{ width: props.gridWidthAndHeight / props.gridSize + 'px' }"
+        :style="{ width: axisSize + 'px' }"
         class="axisItem"
         :key="index"
       >
@@ -21,7 +26,7 @@ const props = defineProps<{
   <table class="coordinateAxis">
     <tr
       v-for="index in gridSize"
-      :style="{ height: props.gridWidthAndHeight / props.gridSize + 'px' }"
+      :style="{ height: axisSize + 'px' }"
       class="axisItem"
       :key="index"
     >

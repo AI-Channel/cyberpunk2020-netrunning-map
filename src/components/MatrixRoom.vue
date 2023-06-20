@@ -71,7 +71,6 @@ function drawLines(): void {
 
 <style lang="scss" scoped>
 @import '/src/assets/style/mixins';
-@import '/src/assets/style/FontStyle';
 
 canvas {
   @include PageCenter;

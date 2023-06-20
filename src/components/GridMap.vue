@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useMenuStore } from '@/stores';
 
-const props = defineProps(['size']);
+const props = defineProps({ size: Number });
 const store = useMenuStore();
 </script>
 
@@ -12,6 +12,7 @@ const store = useMenuStore();
         v-for="gridCol in props.size"
         :key="props.size * (gridRow - 1) + gridCol"
         class="gridItems"
+        tabindex="2"
         @click="
           store.visSwitch();
           store.getMouse($event);
@@ -32,8 +33,12 @@ const store = useMenuStore();
     @include StandardBorder;
     box-sizing: border-box;
     &:hover {
-      border-color: #ccffcc;
-      box-shadow: inset 0 0 5px #ccffcc;
+      border-color: #baffc1;
+      box-shadow: inset 0 0 5px #baffc1;
+    }
+    &:focus {
+      border-color: #ffffff;
+      box-shadow: inset 0 0 5px #ffffff;
     }
   }
 }

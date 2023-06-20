@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import GridMap from '@/components/GridMap.vue';
 import ItemAttributes from '@/components/ItemAttributes.vue';
 import CoordinateAxis from '@/components/CoordinateAxis.vue';
@@ -7,8 +7,8 @@ import DropdownMenu from '@/components/DropdownMenu.vue';
 import { useMenuStore } from '@/stores';
 
 let dataFortressName = ref<string>('Data Fortress');
-let menuWidth = 300;
-let menuHeight = 300;
+let menuWidth = 270;
+let menuHeight = 350;
 const store = useMenuStore();
 
 interface grid {
@@ -22,20 +22,20 @@ let gridAttribute: grid = {
   numberOfItems: 14,
   gridWidthAndHeight: 520
 };
-function mouseReverseX(): number {
-  return store.x + menuWidth >= window.innerWidth ? store.x - menuWidth - 2 : store.x + 2;
-}
-function mouseReverseY(): number {
-  return store.y + menuHeight >= window.innerHeight ? store.y - menuWidth - 2 : store.y + 2;
-}
+const redirectedX = computed(() => {
+  return store.x + 2 + menuWidth >= window.innerWidth ? store.x - menuWidth - 2 : store.x + 2;
+});
+const redirectedY = computed(() => {
+  return store.y + 2 + menuHeight >= window.innerHeight ? store.y - menuHeight - 2 : store.y + 2;
+});
 </script>
 
 <template>
   <DropdownMenu
     v-show="store.menuStatus"
     :style="{
-      top: mouseReverseY() + 'px',
-      left: mouseReverseX() + 'px',
+      top: redirectedY + 'px',
+      left: redirectedX + 'px',
       width: menuWidth + 'px',
       height: menuHeight + 'px'
     }"
@@ -63,7 +63,7 @@ function mouseReverseY(): number {
       />
       <GridMap :size="gridAttribute.gridSize" />
     </div>
-    <div id="containerBorder">
+    <div id="attributeContainer">
       <div id="itemContainer">
         <ItemAttributes :number-of-items="gridAttribute.numberOfItems" />
       </div>
@@ -91,12 +91,10 @@ function mouseReverseY(): number {
   width: 1220px;
   height: 640px;
   display: grid;
-  box-shadow: inset 0 0 5px $mainColor;
   backdrop-filter: blur(3px);
   user-select: none;
   grid: {
-    template-rows: 40px 1fr;
-    template-columns: 1fr 1fr;
+    template: auto/repeat(2, minmax(0, 1fr));
     auto-flow: column;
   }
 
@@ -120,7 +118,7 @@ function mouseReverseY(): number {
     max-width: 80%;
     justify-content: space-between;
     padding: 7px 20px;
-    box-shadow: 15px 15px 8px rgba($mainColor, 0.3);
+    box-shadow: 15px 15px 8px rgba($mainColor, 0.5);
   }
 
   #outContainer {
@@ -129,9 +127,10 @@ function mouseReverseY(): number {
     display: grid;
     width: 570px;
     height: 570px;
+    box-shadow: 0 0 10px rgba($mainColor, 0.75);
   }
 
-  #containerBorder {
+  #attributeContainer {
     @include StandardBorder;
     grid-row: 1/3;
     margin: 20px;
